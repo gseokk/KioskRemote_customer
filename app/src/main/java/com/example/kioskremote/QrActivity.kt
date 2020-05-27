@@ -21,7 +21,7 @@ class QrActivity : AppCompatActivity() {
         qrScan!!.setPrompt("Read QR Code!!!")
         qrScan!!.initiateScan()
 
-        // 임시로 만든거임. QR 코드 읽으면 화면 넘어갈 수 있게 해야 됨.
+        // 임시로 만든거임. QR 코드 읽으면 화면 넘어갈 수 있게 해야 됨
         qr.setOnClickListener{
             val intent= Intent(this, MenuActivity::class.java)
             startActivity(intent)
