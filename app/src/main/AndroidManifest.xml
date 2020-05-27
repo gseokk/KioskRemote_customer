@@ -5,7 +5,6 @@
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="false" />
-
     <uses-permission android:name="android.permission.NFC" />
     <application
         android:allowBackup="true"

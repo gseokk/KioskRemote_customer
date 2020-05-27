@@ -21,7 +21,7 @@ public class NFCActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_nfc);
         text = (TextView) findViewById(R.id.text);
         //단말기의 nfc 상태를 점검
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
