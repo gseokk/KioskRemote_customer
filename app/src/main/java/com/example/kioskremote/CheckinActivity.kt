@@ -14,7 +14,7 @@ class CheckinActivity : AppCompatActivity() {
 
         //NFC read 화면으로
         nfc_button.setOnClickListener{
-            val intent= Intent(this, NfcActivity::class.java)
+            val intent= Intent(this, NFCActivity::class.java)
             startActivity(intent)
         }
         //QR 코드 read 화면으로
