@@ -14,19 +14,19 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CmActivity"></activity>
-        <activity android:name=".CheckinActivity" />
-        <activity android:name=".FoodviewActivity" />
-        <activity android:name=".PaymentActivity" />
-        <activity android:name=".BagActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".QrActivity"
+        <activity android:name=".activity.CmActivity"></activity>
+        <activity android:name=".activity.CheckinActivity" />
+        <activity android:name=".activity.FoodviewActivity" />
+        <activity android:name=".activity.PaymentActivity" />
+        <activity android:name=".activity.BagActivity" />
+        <activity android:name=".activity.MenuActivity" />
+        <activity android:name=".activity.QrActivity"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:replace="screenOrientation"/>
-        <activity android:name=".NfcActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.NfcActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,8 +1,9 @@
-package com.example.kioskremote
+package com.example.kioskremote.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.kioskremote.R
 import kotlinx.android.synthetic.main.activity_foodview.*
 
 class FoodviewActivity : AppCompatActivity() {

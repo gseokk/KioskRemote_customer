@@ -1,14 +1,13 @@
-package com.example.kioskremote
+package com.example.kioskremote.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_nfc.*
+import com.example.kioskremote.R
 import kotlinx.android.synthetic.main.activity_qr.*
 
 import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentResult
 
 class QrActivity : AppCompatActivity() {
     private var qrScan: IntentIntegrator? = null

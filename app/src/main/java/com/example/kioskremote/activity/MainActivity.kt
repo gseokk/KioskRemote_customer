@@ -1,10 +1,9 @@
-package com.example.kioskremote
+package com.example.kioskremote.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kioskremote.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
