@@ -1,14 +1,13 @@
-package com.example.kioskremote
+package com.example.kioskremote.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.kioskremote.R
 
-class PaymentActivity : AppCompatActivity() {
+class CmActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_payment)
-
-        //결제 파일
+        setContentView(R.layout.activity_cm)
     }
 }
