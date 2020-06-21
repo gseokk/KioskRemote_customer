@@ -36,7 +36,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     fun makeViewData(photo: Int, title: String) {
-        val data = FoodData(photo, title)
+        val data = FoodData(photo, title, "")
         adapter!!.addItem(data)
     }
 }
