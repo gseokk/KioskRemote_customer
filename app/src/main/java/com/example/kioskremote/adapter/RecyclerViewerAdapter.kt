@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kioskremote.view.OnViewHolderItemClickListener
 import com.example.kioskremote.R
-import com.example.kioskremote.view.ViewHolderMovie
+import com.example.kioskremote.view.ViewHolderFood
 import com.example.kioskremote.dto.FoodData
 import java.util.*
 
@@ -26,17 +26,17 @@ class RecyclerViewerAdapter :
         viewType: Int
     ): RecyclerView.ViewHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
-        return ViewHolderMovie(view)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
+        return ViewHolderFood(view)
     }
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
         position: Int
     ) {
-        val viewHolderMovie: ViewHolderMovie = holder as ViewHolderMovie
-        viewHolderMovie.onBind(listData[position], position, selectedItems)
-        ViewHolderMovie.setOnViewHolderItemClickListener(viewHolderMovie, object :
+        val viewHolderFood: ViewHolderFood = holder as ViewHolderFood
+        viewHolderFood.onBind(listData[position], position, selectedItems)
+        ViewHolderFood.setOnViewHolderItemClickListener(viewHolderFood, object :
             OnViewHolderItemClickListener {
             override fun onViewHolderItemClick() {
                 if (selectedItems[position]) {

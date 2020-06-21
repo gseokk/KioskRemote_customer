@@ -30,13 +30,13 @@ class MenuActivity : AppCompatActivity() {
 
     fun getData() {
         // TODO 여기서 이제 메뉴판 데이터 읽고 iterate하게 데이터 추가하기만 하면 된다! (현재 하드코딩)
-        makeViewData(R.drawable.jja, "짜장")
-        makeViewData(R.drawable.jjam, "짬뽕")
-        makeViewData(R.drawable.tang, "탕수육")
+        makeViewData(R.drawable.jja, "짜장", "짜장 설명")
+        makeViewData(R.drawable.jjam, "짬뽕", "짬뽕 설명")
+        makeViewData(R.drawable.tang, "탕수육", "탕수육 설명")
     }
 
-    fun makeViewData(photo: Int, title: String) {
-        val data = FoodData(photo, title, "")
+    fun makeViewData(photo: Int, title: String, description: String) {
+        val data = FoodData(photo, title, description)
         adapter!!.addItem(data)
     }
 }
