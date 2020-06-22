@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="224dp"
         android:layout_marginLeft="224dp"
-        android:text="점주와의 소통"
+        android:text="메뉴 평가"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
