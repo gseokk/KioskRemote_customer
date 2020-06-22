@@ -1,7 +1,5 @@
 package com.example.kioskremote.dto
 
-import java.security.Timestamp
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 class FoodData(var image: Int, var title: String, var description: String)
