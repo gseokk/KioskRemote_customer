@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //점주와 소통화면으로
-        communication_button.setOnClickListener{
+        /*communication_button.setOnClickListener{
             val intent=Intent(this, CmActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 }

@@ -7,7 +7,7 @@ class FoodData(var image: Int, var title: String, var description: String)
 data class Store(
     val name: String? = null,
     val menuList: List<Menu>? = null,
-    val table: List<Table>? = null,
+    val table: MutableList<Table>? = null,
     val location: String? = null
 )
 

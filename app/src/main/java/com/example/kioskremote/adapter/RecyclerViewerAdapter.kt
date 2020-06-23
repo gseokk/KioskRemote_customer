@@ -34,7 +34,7 @@ class RecyclerViewerAdapter :
             LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
 
         for(i in 0 .. itemCount ) {
-            orderNum = mutableListOf(0, 0 , 0)
+            orderNum = mutableListOf(0, 0, 0, 0, 0, 0, 0)
         }
 
         return ViewHolderFood(view)
