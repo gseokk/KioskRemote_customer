@@ -13,6 +13,7 @@ import com.example.kioskremote.R
 import com.example.kioskremote.adapter.RecyclerViewerAdapter
 import com.example.kioskremote.dto.*
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
@@ -49,7 +50,7 @@ class MenuActivity : AppCompatActivity() {
             }
 
             db.collection("order").document(order.name.toString())
-                .set(order, SetOptions.merge())
+                .update("orderList", FieldValue.arrayUnion(order))
                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
             Toast.makeText(this, "총 ${totalAmount}원 주문 완료!", Toast.LENGTH_SHORT).show()

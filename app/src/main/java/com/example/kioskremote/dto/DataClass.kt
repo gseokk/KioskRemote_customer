@@ -29,6 +29,10 @@ data class Table(
     val availability: Boolean? = null
 )
 
+data class OrderList(
+    var orderList: MutableList<Order>? = null
+)
+
 data class Order(
     var name: String? = null,
     var table: Int? = null,
