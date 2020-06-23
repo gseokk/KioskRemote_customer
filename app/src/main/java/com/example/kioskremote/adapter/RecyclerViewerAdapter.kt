@@ -10,6 +10,7 @@ import com.example.kioskremote.view.OnViewHolderItemClickListener
 import com.example.kioskremote.R
 import com.example.kioskremote.view.ViewHolderFood
 import com.example.kioskremote.dto.FoodData
+import com.google.protobuf.Internal
 import java.util.*
 
 class RecyclerViewerAdapter :
@@ -20,14 +21,22 @@ class RecyclerViewerAdapter :
     // Item의 클릭 상태를 저장할 array 객체
     private val selectedItems = SparseBooleanArray()
 
+    lateinit var orderNum : MutableList<Int>
+
     // 직전에 클릭됐던 Item의 position
     private var prePosition = -1
+    
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): RecyclerView.ViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
+
+        for(i in 0 .. itemCount ) {
+            orderNum = mutableListOf(0, 0 , 0)
+        }
+
         return ViewHolderFood(view)
     }
 
@@ -40,11 +49,8 @@ class RecyclerViewerAdapter :
         ViewHolderFood.setOnViewHolderItemClickListener(viewHolderFood, object :
             OnViewHolderItemClickListener {
             override fun onViewHolderItemClick() {
-                for( i in 0..2 ) {
-                    val viewHolderFoodTmp: ViewHolderFood = holder as ViewHolderFood
-                    viewHolderFoodTmp.onBind(listData[i], i, selectedItems)
-                    Log.d("ABCDE", "${viewHolderFoodTmp.et.text}")
-                }
+                orderNum[position] = viewHolderFood.et.text.toString().toInt()
+
                 if (selectedItems[position]) {
                     // 펼쳐진 Item을 클릭 시
                     selectedItems.delete(position)

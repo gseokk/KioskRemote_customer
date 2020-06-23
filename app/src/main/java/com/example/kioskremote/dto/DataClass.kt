@@ -1,6 +1,6 @@
 package com.example.kioskremote.dto
 
-import java.time.LocalDateTime
+import com.google.firebase.Timestamp
 
 class FoodData(var image: Int, var title: String, var description: String)
 
@@ -30,9 +30,13 @@ data class Table(
 )
 
 data class Order(
-    val name: String? = null,
-    val table: Int? = null,
-    val menu: List<Pair<String, Int>>? = null,
-    val timestamp: LocalDateTime
-
+    var name: String? = null,
+    var table: Int? = null,
+    var menu: MutableList<String>? = null,
+    var timestamp: Timestamp,
+    var flag: Boolean
 )
+
+object OrderCount {
+    var list = mutableListOf(0, 0, 0)
+}

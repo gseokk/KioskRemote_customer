@@ -1,13 +1,13 @@
 package com.example.kioskremote.view
 
 import android.animation.ValueAnimator
-import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kioskremote.R
 import com.example.kioskremote.dto.FoodData
+import com.example.kioskremote.dto.OrderCount
 import java.lang.Integer.parseInt
 
 class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -19,6 +19,7 @@ class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var btplus: Button
     var btminus: Button
     var et : EditText
+    var position: Int? = null
     var onViewHolderItemClickListener: OnViewHolderItemClickListener? = null
     fun onBind(data: FoodData, position: Int, selectedItems: SparseBooleanArray) {
         tv_food_title.setText(data.title)
@@ -26,6 +27,7 @@ class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
         iv_food2.setImageResource(data.image)
         tv_description.setText(data.description)
         changeVisibility(selectedItems[position])
+        this.position = position
     }
 
     private fun changeVisibility(isExpanded: Boolean) {
@@ -62,12 +64,14 @@ class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
             var cnt = parseInt(et.text.toString())
             cnt++
             et.setText(cnt.toString())
+            OrderCount.list[position!!] = cnt
         }
         btminus = itemView.findViewById(R.id.minus)
         btminus.setOnClickListener{
             var cnt = parseInt(et.text.toString())
             cnt--
             et.setText(cnt.toString())
+            OrderCount.list[position!!] = cnt
         }
     }
 
