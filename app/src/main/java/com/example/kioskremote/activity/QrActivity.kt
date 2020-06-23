@@ -33,6 +33,8 @@ class QrActivity : AppCompatActivity() {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
+                val intent= Intent(this, MenuActivity::class.java)
+                startActivity(intent)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

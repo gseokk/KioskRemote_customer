@@ -1,22 +1,24 @@
 package com.example.kioskremote.view
 
 import android.animation.ValueAnimator
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kioskremote.R
 import com.example.kioskremote.dto.FoodData
+import java.lang.Integer.parseInt
 
-class ViewHolderFood(itemView: View) :
-    RecyclerView.ViewHolder(itemView) {
+class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var tv_food_title: TextView
     var iv_food: ImageView
     var iv_food2: ImageView
     var tv_description: TextView
     var linearlayout: LinearLayout
+    var btplus: Button
+    var btminus: Button
+    var et : EditText
     var onViewHolderItemClickListener: OnViewHolderItemClickListener? = null
     fun onBind(data: FoodData, position: Int, selectedItems: SparseBooleanArray) {
         tv_food_title.setText(data.title)
@@ -53,12 +55,27 @@ class ViewHolderFood(itemView: View) :
         tv_description = itemView.findViewById(R.id.description)
         linearlayout = itemView.findViewById(R.id.linearlayout)
         linearlayout.setOnClickListener { onViewHolderItemClickListener!!.onViewHolderItemClick() }
+        et = itemView.findViewById(R.id.cnt)
+        et.setText("0")
+        btplus = itemView.findViewById(R.id.plus)
+        btplus.setOnClickListener{
+            var cnt = parseInt(et.text.toString())
+            cnt++
+            et.setText(cnt.toString())
+        }
+        btminus = itemView.findViewById(R.id.minus)
+        btminus.setOnClickListener{
+            var cnt = parseInt(et.text.toString())
+            cnt--
+            et.setText(cnt.toString())
+        }
     }
 
     companion object {
         fun setOnViewHolderItemClickListener(
             viewHolderFood: ViewHolderFood,
-            onViewHolderItemClickListener: OnViewHolderItemClickListener?) {
+            onViewHolderItemClickListener: OnViewHolderItemClickListener?
+        ) {
             viewHolderFood.onViewHolderItemClickListener = onViewHolderItemClickListener
         }
     }
