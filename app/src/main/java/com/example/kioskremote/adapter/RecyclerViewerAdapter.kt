@@ -1,5 +1,6 @@
 package com.example.kioskremote.adapter
 
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,11 @@ class RecyclerViewerAdapter :
         ViewHolderFood.setOnViewHolderItemClickListener(viewHolderFood, object :
             OnViewHolderItemClickListener {
             override fun onViewHolderItemClick() {
+                for( i in 0..2 ) {
+                    val viewHolderFoodTmp: ViewHolderFood = holder as ViewHolderFood
+                    viewHolderFoodTmp.onBind(listData[i], i, selectedItems)
+                    Log.d("ABCDE", "${viewHolderFoodTmp.et.text}")
+                }
                 if (selectedItems[position]) {
                     // 펼쳐진 Item을 클릭 시
                     selectedItems.delete(position)

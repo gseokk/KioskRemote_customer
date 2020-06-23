@@ -1,10 +1,12 @@
 package com.example.kioskremote.activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,14 +24,18 @@ class MenuActivity : AppCompatActivity() {
     var adapter: RecyclerViewerAdapter? = null
     private val TAG = "Firestore"
     val db = FirebaseFirestore.getInstance()
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
-
+        var ord = findViewById<Button>(R.id.order_button);
         init()
         getData()
+        ord.setOnClickListener() {
+            //val intent= Intent(this, MenuActivity::class.java)
+            //startActivity(intent)
+            Toast.makeText(this, "주문하기 눌림", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun init() {
