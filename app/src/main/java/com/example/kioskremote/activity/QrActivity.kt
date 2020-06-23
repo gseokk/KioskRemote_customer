@@ -34,6 +34,7 @@ class QrActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
                 val intent= Intent(this, MenuActivity::class.java)
+                intent.putExtra("storeName",result.contents)
                 startActivity(intent)
             }
         } else {

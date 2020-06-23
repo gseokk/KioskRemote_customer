@@ -16,6 +16,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import java.lang.Integer.parseInt
 
 class MenuActivity : AppCompatActivity() {
     var adapter: RecyclerViewerAdapter? = null
@@ -24,12 +25,14 @@ class MenuActivity : AppCompatActivity() {
     var storeName: String = ""
     var menuList : List<Menu>? = null
     var table: Int = 0
+    lateinit var splitText: List<String>
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         var ord = findViewById<Button>(R.id.order_button);
+        splitText = intent.getStringExtra("storeName").split(",")
         init()
         getData()
         ord.setOnClickListener() {
@@ -75,9 +78,13 @@ class MenuActivity : AppCompatActivity() {
          * 그래서 그냥 맨 첫번째 데이터는 static하게 넣고 뷰를 그려준 후에 나중에 콜백받을때 그려주는 방법 채택(그냥 돌아가게 보이기만...)
          */
         // TODO "중국집" 이부분은 하드코딩!!! nfc, QR로 체크인 하면 해당 Store가 넘어가야함
-        storeName = "신수동_중국집"
+        //storeName = "신수동_중국집"
         // TODO Table 번호
-        table = 3
+        //table = 3
+        storeName = splitText[0]
+        table = parseInt(splitText[1])
+
+        Log.d("ABCDE","Store: "+storeName+" table: "+table);
 
         val docRef = db.collection("store").document(storeName)
 
