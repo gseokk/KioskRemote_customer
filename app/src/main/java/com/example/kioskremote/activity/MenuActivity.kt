@@ -13,9 +13,7 @@ import com.example.kioskremote.R
 import com.example.kioskremote.adapter.RecyclerViewerAdapter
 import com.example.kioskremote.dto.*
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.*
 import java.lang.Integer.parseInt
 
 class MenuActivity : AppCompatActivity() {
@@ -35,6 +33,28 @@ class MenuActivity : AppCompatActivity() {
 //        splitText = intent.getStringExtra("storeName").split(",")
         init()
         getData()
+
+
+        val docRef = db.collection("order").document("신수동_중국집")
+
+        docRef.addSnapshotListener(EventListener<DocumentSnapshot> { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@EventListener
+            }
+            if (snapshot != null && snapshot.exists()) {
+                var orderList = snapshot.toObject(OrderList::class.java)!!
+
+                for(order in orderList.orderList!!){
+                    if(order.flag == true && order.table == this.table){
+                        Toast.makeText(this, "따뜻한 음식이 완성되었습니다! 받아가세요!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+
+            }
+        })
+
         ord.setOnClickListener() {
             //val intent= Intent(this, MenuActivity::class.java)
             //startActivity(intent)
@@ -50,6 +70,7 @@ class MenuActivity : AppCompatActivity() {
                 }?:let {
                     order.menu = mutableListOf("${menuList!![i].name},${OrderCount.list!![i + 1]}")
                 }
+                order.totalAmount = totalAmount
             }
 
             db.collection("order").document(order.name.toString())
@@ -57,6 +78,7 @@ class MenuActivity : AppCompatActivity() {
                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
             Toast.makeText(this, "총 ${totalAmount}원 주문 완료!", Toast.LENGTH_SHORT).show()
+
         }
     }
 
