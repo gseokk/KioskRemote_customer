@@ -64,14 +64,14 @@ class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
             var cnt = parseInt(et.text.toString())
             cnt++
             et.setText(cnt.toString())
-            OrderCount.list[position!!] = cnt
+            OrderCount.list!![position!!] = cnt
         }
         btminus = itemView.findViewById(R.id.minus)
         btminus.setOnClickListener{
             var cnt = parseInt(et.text.toString())
             cnt--
             et.setText(cnt.toString())
-            OrderCount.list[position!!] = cnt
+            OrderCount.list!![position!!] = cnt
         }
     }
 

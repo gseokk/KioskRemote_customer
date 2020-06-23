@@ -42,5 +42,5 @@ data class Order(
 )
 
 object OrderCount {
-    var list = mutableListOf(0, 0, 0)
+    var list : MutableList<Int>? = null
 }

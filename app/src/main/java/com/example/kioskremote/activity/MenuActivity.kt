@@ -32,7 +32,7 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         var ord = findViewById<Button>(R.id.order_button);
-        splitText = intent.getStringExtra("storeName").split(",")
+//        splitText = intent.getStringExtra("storeName").split(",")
         init()
         getData()
         ord.setOnClickListener() {
@@ -44,11 +44,11 @@ class MenuActivity : AppCompatActivity() {
             var order = Order(storeName, this.table, null, Timestamp.now(), false)
 
             for(i in menuList!!.indices){
-                totalAmount += OrderCount.list[i+1] * menuList!![i].price!!
+                totalAmount += OrderCount.list!![i+1] * menuList!![i].price!!
                 order.menu?.let {
-                    it.add(i, "${menuList!![i].name},${OrderCount.list[i + 1]}")
+                    it.add(i, "${menuList!![i].name},${OrderCount.list!![i + 1]}")
                 }?:let {
-                    order.menu = mutableListOf("${menuList!![i].name},${OrderCount.list[i + 1]}")
+                    order.menu = mutableListOf("${menuList!![i].name},${OrderCount.list!![i + 1]}")
                 }
             }
 
@@ -78,11 +78,11 @@ class MenuActivity : AppCompatActivity() {
          * 그래서 그냥 맨 첫번째 데이터는 static하게 넣고 뷰를 그려준 후에 나중에 콜백받을때 그려주는 방법 채택(그냥 돌아가게 보이기만...)
          */
         // TODO "중국집" 이부분은 하드코딩!!! nfc, QR로 체크인 하면 해당 Store가 넘어가야함
-        //storeName = "신수동_중국집"
+        storeName = "신수동_중국집"
         // TODO Table 번호
-        //table = 3
-        storeName = splitText[0]
-        table = parseInt(splitText[1])
+        table = 2
+//        storeName = splitText[0]
+//        table = parseInt(splitText[1])
 
         Log.d("ABCDE","Store: "+storeName+" table: "+table);
 
@@ -94,6 +94,15 @@ class MenuActivity : AppCompatActivity() {
             Log.d(TAG, "store : $store")
 
             menuList = store!!.menuList!!
+
+
+            for(i in menuList!!.indices + 1) {
+                OrderCount.list?.let {
+                    it.add(i, 0)
+                }?:let {
+                    OrderCount.list = mutableListOf(0)
+                }
+            }
 
 
             store!!.menuList!!.forEach {
